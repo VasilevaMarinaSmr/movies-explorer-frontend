@@ -1,6 +1,30 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Logs
+logs
+*.log
+npm-debug.log*
 
-# dependencies
+# Dependency directory
+node_modules
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.DS_Store
+.idea
+.vscode
+
+# Test REST
+examle.http
+
+# ENV
+.env
+
+
+# log
+.log
+
+
 /node_modules
 /.pnp
 .pnp.js

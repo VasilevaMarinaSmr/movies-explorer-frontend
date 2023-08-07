@@ -1,0 +1,12 @@
+.hat{
+  
+  height: 38px;
+  width: 38px;
+  transition: transform .3s ease-in;
+}
+
+.hat:hover{
+  opacity: 0.7;
+  transition: 0.3s ease-in-out opacity;
+  cursor: pointer;
+}
