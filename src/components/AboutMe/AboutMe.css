@@ -96,6 +96,10 @@
       line-height: 18px;
     }
 
+    .about-me__links {
+      margin-top: 87px;
+    }
+    
     .about-me__paragraph {
       margin: 20px 0 0;
       font-size: 12px;

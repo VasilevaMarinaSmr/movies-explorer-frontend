@@ -14,11 +14,12 @@
   .movies-list__btn-conteiner{
     display: flex;
     justify-content: space-between;
-    margin: 50px auto 106px;
+    margin: 50px auto 80px;
     max-width: 1140px;
     padding: auto;
     background-color: white;
-    height: 10px;
+    min-height: 14px;
+    height: auto;
   }
   
   .movies-list__btn-show-more {
@@ -95,5 +96,10 @@
     .movies-list__container {
       padding: 40px 0 30px;
     }
+
+    .movies-list__btn-conteiner{
+      min-height: 10px;      
+    }
+
   }
   

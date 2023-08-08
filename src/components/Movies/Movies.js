@@ -17,7 +17,7 @@ function Movies({ movies, isLoggedIn }) {
       </header>
       <main className="movies">
         <SearchForm />
-        <MoviesCardList movies={movies} />
+        <MoviesCardList movies={movies} MoreMovies={false} />
         <Footer />
       </main>
     </>

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard.js";
 import "./MoviesCardList.css";
 
-function MoviesCardList({ movies }) {
+function MoviesCardList({ movies, MoreMovies }) {
 
-  const [isMoreMovies, setMoreMovies] = useState(false);
+  const [isMoreMovies, setMoreMovies] = useState(MoreMovies);
 
   return (
     <section className='movies-list'>
