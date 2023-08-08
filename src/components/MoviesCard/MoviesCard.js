@@ -44,7 +44,7 @@ function MoviesCard({ movie }) {
             className='movie__btn-delete'></button>
         )}
       </div>
-      <img className='movie__img' src={movie.image} alt='сцена из фильма' />
+      <img className='movie__img' src={movie.image} alt={`сцена из фильма ${movie.nameRu}`}/>
     </li>
   );
 }
