@@ -50,7 +50,7 @@ function Entrance(props) {
         </button>
         <p className="entrance__subtitle">
           {props.subtitle}
-          <NavLink to={props.linkTo} className="entrance__link">
+          <NavLink to={`/${props.linkTo}`} className="entrance__link">
             {props.linkName}
           </NavLink>
         </p>

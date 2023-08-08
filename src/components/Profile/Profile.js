@@ -1,9 +1,10 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate} from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import "./Profile.css";
 
 function Profile() {
+  const navigate = useNavigate();
   const user = "Виталий";
   const [name, setName] = React.useState(user);
   const [email, setEmail] = React.useState("pochta@yandex.ru");
@@ -15,6 +16,11 @@ function Profile() {
   function handleChangeEmail(event) {
     setEmail(event.target.value);
   }
+
+  const onSignOut = () => {
+   
+    navigate("/", { replace: true });
+  };
 
   return (
     <>
@@ -64,7 +70,9 @@ function Profile() {
             <button className="profile__btn profile__btn_type_edit">
               Редактировать
             </button>
-            <button className="profile__btn profile__btn_type_exit">
+            
+            <button className="profile__btn profile__btn_type_exit"
+            onClick={onSignOut}>
               Выйти из аккаунта
             </button>
           </form>
