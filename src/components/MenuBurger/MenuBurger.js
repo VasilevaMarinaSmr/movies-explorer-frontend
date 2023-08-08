@@ -20,14 +20,22 @@ function MenuBurger() {
 
   return (
     <nav className="nav__burger">
-      <button className="burger__btn" onClick={handleClick}></button>
+      <button
+        className="burger__btn"
+        type="button"
+        onClick={handleClick}
+      ></button>
       <div
         className={`burger__container ${
           isOpen ? "burger__container_open" : ""
         }`}
       >
         <div className={`burger__popup ${isOpen ? "burger__popup_open" : ""}`}>
-          <button className="burger__btn-close" onClick={closePopup}></button>
+          <button
+            type="button"
+            className="burger__btn-close"
+            onClick={closePopup}
+          ></button>
           <div className="burger__box">
             <NavLink
               exact="true"

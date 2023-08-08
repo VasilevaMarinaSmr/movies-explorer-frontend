@@ -21,7 +21,9 @@ function Main() {
             Регистрация
           </NavLink>
           <NavLink to="/signin">
-            <button className="header__button-login">Войти</button>
+            <button className="header__button-login" type="button">
+              Войти
+            </button>
           </NavLink>
         </div>
       </Header>

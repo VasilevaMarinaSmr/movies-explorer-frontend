@@ -18,7 +18,6 @@ function Profile() {
   }
 
   const onSignOut = () => {
-   
     navigate("/", { replace: true });
   };
 
@@ -67,11 +66,17 @@ function Profile() {
               />
               <span id="email-error" className="profile__input-error"></span>
             </label>
-            <button className="profile__btn profile__btn_type_edit">
+            <button
+              type="submit"
+              className="profile__btn profile__btn_type_edit"
+            >
               Редактировать
-            </button>         
-            <button className="profile__btn profile__btn_type_exit"
-            onClick={onSignOut}>
+            </button>
+            <button
+              className="profile__btn profile__btn_type_exit"
+              onClick={onSignOut}
+              type="button"
+            >
               Выйти из аккаунта
             </button>
           </form>

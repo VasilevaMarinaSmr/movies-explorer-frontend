@@ -11,20 +11,24 @@ function SearchForm() {
   }
   return (
     <section className="search">
-      <div className="search__movie">
+      <form className="search__movie">
         <input
-          required
           id="film"
           name="film"
           type="text"
           placeholder="Фильм"
           className="search__item"
+          required
         ></input>
-        <button className="search__button">Найти</button>
-      </div>
+        <button className="search__button" type="submit">
+          Найти
+        </button>
+      </form>
       <div className="search__tumb">
         <label
-          className={`search__tumb-btn ${isActive ? "search__tumb-btn_on" : ""}`}
+          className={`search__tumb-btn ${
+            isActive ? "search__tumb-btn_on" : ""
+          }`}
           onClick={handleClick}
         ></label>
         <p className="search__film-length">Короткометражки</p>
