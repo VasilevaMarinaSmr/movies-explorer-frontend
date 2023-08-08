@@ -8,19 +8,20 @@ import "./SavedMovies.css";
 
 function SavedMovies({ movies, isLoggedIn }) {
   return (
-    <main className="saved-movies">
-      <>
-        <header className="header">
-          <NavLink to="/">
-            <div className="header__logo" />
-          </NavLink>
-          <Navigation />
-        </header>
+    <>
+      <header className="header">
+        <NavLink to="/">
+          <div className="header__logo" />
+        </NavLink>
+        <Navigation />
+      </header>
+      <main className="saved-movies">
         <SearchForm />
         <MoviesCardList movies={movies} />
+
         <Footer />
-      </>
-    </main>
+      </main>
+    </>
   );
 }
 

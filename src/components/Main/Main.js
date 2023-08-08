@@ -11,7 +11,7 @@ import "./Main.css";
 
 function Main() {
   return (
-    <main className="main">
+    <>
       <Header className="header">
         <NavLink to="/">
           <div className="header__logo" />
@@ -25,13 +25,15 @@ function Main() {
           </NavLink>
         </div>
       </Header>
-      <Promo />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
+      <main className="main">
+        <Promo />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
 

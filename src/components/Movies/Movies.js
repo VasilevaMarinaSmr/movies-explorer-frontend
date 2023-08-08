@@ -7,21 +7,21 @@ import SearchForm from "../SearchForm/SearchForm";
 import "./Movies.css";
 
 function Movies({ movies, isLoggedIn }) {
-    return (
-      <main className='movies'>
-         <>
+  return (
+    <>
       <header className="header">
         <NavLink to="/">
           <div className="header__logo" />
         </NavLink>
         <Navigation />
       </header>
-        <SearchForm/>
-       <MoviesCardList movies={movies} />
-      <Footer /> 
-    </>
+      <main className="movies">
+        <SearchForm />
+        <MoviesCardList movies={movies} />
+        <Footer />
       </main>
-    );
-  }
-  
-  export default Movies;
+    </>
+  );
+}
+
+export default Movies;

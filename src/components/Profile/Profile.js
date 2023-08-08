@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import "./Profile.css";
 
@@ -30,7 +30,7 @@ function Profile() {
         </NavLink>
         <Navigation />
       </header>
-      <section className="profile">
+      <main className="profile">
         <div className="profile__box">
           <h2 className="profile__title">{`Привет, ${user}!`}</h2>
           <form className="profile__form">
@@ -69,15 +69,14 @@ function Profile() {
             </label>
             <button className="profile__btn profile__btn_type_edit">
               Редактировать
-            </button>
-            
+            </button>         
             <button className="profile__btn profile__btn_type_exit"
             onClick={onSignOut}>
               Выйти из аккаунта
             </button>
           </form>
         </div>
-      </section>
+      </main>
     </>
   );
 }
