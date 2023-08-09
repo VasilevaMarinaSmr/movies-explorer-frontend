@@ -1,0 +1,146 @@
+.search {
+    margin: 60px 70px 10px;
+  }
+
+  .search__movie {
+    display: flex;
+    border-radius: 40px;
+    justify-content: space-between;
+    background-color: #f9f9f9;    
+  }
+
+  .search__item {
+    margin: 0 0 0 22px;
+    padding: 0;
+    border: none;
+    align-self: center;
+    color: #a0a0a0;
+    background-color: #f9f9f9;
+    font-size: 13px;
+    line-height: 17px;
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  .search__item {
+    outline: none;
+  }
+
+  .search__button {
+    margin: 6px;
+    padding: 0;
+    border-radius: 48px;
+    border: none;
+    width: 59px;
+    height: 34px;
+    background-color: #3456f3;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+    font-style: normal;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .search__button:hover {
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  .search__tumb-btn {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 38px;
+    height: 20px;
+    border-radius: 19px;
+    background: #ebebeb;
+    z-index: 0;
+    cursor: pointer;
+    position: relative;
+    transition-duration: 400ms;
+  }
+
+  .search__tumb-btn::after {
+    margin: 0;
+    border: 1px solid white;
+    border-radius: 16px;
+    content: "";
+    height: 15px;
+    width: 15px;
+    background: #2be080;
+    top: 2px;
+    transition-duration: 400ms;
+    position: absolute;
+    z-index: 1;
+    left: 3px;
+  }
+
+  .search__tumb-btn_on {
+    background: #ebebeb;
+  }
+
+  .search__tumb-btn_on::after {
+    left: 20px;
+  }
+  
+  .search__tumb {
+    display: flex;
+    margin: 42px 0 0;
+    padding-bottom: 69px;
+    border-bottom: 1px solid rgba(170, 170, 170, 0.2);    
+    justify-content: center;
+  }
+  
+  .search__film-length {
+    margin: 0 0 0 12px;
+    align-self: center;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 18px;    
+  }
+
+  @media screen and (max-width: 769px) {
+    .search {
+      margin: 80px 30px 10px;
+    }
+
+    .search__tumb {
+      padding-bottom: 49px;        
+      }
+
+    .search__tumb-btn {
+        width: 36px;
+    }
+
+    .search__tumb-btn::after {
+      height: 14px;
+      width: 14px;
+      border-radius: 15px;
+    }
+
+    .search__tumb-btn_on::after {
+        left: 18px;
+      }
+  }
+
+  @media screen and (max-width: 450px) {
+    .search {
+      margin: 80px 14px 10px;
+    }
+    
+    .search__item {
+        margin: 0 0 0 19px;
+        font-size: 11px;
+      }
+
+    .search__button {
+      margin: 6px;
+      width: 58px;
+      height: 34px;
+    }
+    .search__film-length {
+      font-size: 11px;
+    }
+  }

@@ -1,0 +1,184 @@
+.about-me {
+    padding: 110px 70px 100px;
+  }
+
+  .about-me__header {
+    padding-bottom: 23px;
+    margin: 0;
+    border-bottom: 1px solid black;
+    font-style: normal;
+    font-size: 22px;
+    letter-spacing: -0.04em;
+    line-height: 27px;
+    font-weight: normal;    
+  }
+
+  .about-me__container-info {
+    display: flex;
+    margin: 66px 0 0;
+    justify-content: space-between;    
+  }
+
+  .about-me__info {
+    max-width: 600px;
+    padding-right: 30px;
+  }
+  .about-me__name {
+    margin: 0 0 18px;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: -0.04em;
+    line-height: 58px;
+    
+  }
+  .about-me__profession {
+    margin: 0;
+    font-size: 18px;
+    line-height: 20px;
+    font-style: normal;
+    font-weight: 500;
+    
+  }
+  .about-me__paragraph {
+    margin: 26px 0 0;
+    font-size: 14px;    
+    font-style: normal;
+    font-weight: normal;
+    line-height: 22px;
+  }
+  
+  .about-me__photo {
+    width: 270px;
+    border-radius: 10px;
+    height: 327px;
+    object-fit: cover;
+  }
+
+  .about-me__links {
+    margin-top: 99px;
+  }
+
+  .about-me__link {
+    margin: 0;
+    text-decoration: none;
+    color: #000000;    
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .about-me__link:hover {
+    text-shadow: 0px 2px rgba(0, 0, 0, 0.3);    
+  }
+
+   @media screen and (max-width: 769px) {
+    .about-me {
+      padding: 90px 50px;
+    }
+
+    .about-me__photo {
+      width: 255px;
+      height: 307px;
+    }
+
+    .about-me__name {
+      margin: 0 0 16px;
+      font-size: 40px;
+      line-height: 40px;
+      font-style: normal;
+      font-weight: normal;
+    }
+
+    .about-me__profession {
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    .about-me__links {
+      margin-top: 87px;
+    }
+    
+    .about-me__paragraph {
+      margin: 20px 0 0;
+      font-size: 12px;
+      line-height: 18px;
+    }
+  }
+
+  @media screen and (max-width: 584px) {
+    .about-me {
+      padding: 90px 30px;
+    }
+  }
+
+  @media screen and (max-width: 490px) {
+    .about-me__container-info {
+      flex-direction: column-reverse;
+      align-content: center;
+    }
+
+    .about-me__info {
+      padding: 0;
+    }
+
+    .about-me__name {
+      margin: 40px 0 18px;
+      font-size: 30px;
+      line-height: 36px;
+      font-style: normal;
+      font-weight: normal;
+    }
+
+    .about-me {
+      padding: 90px 30px;
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+    .about-me {
+      padding: 70px 14px;
+    }
+  
+    .about-me__header {
+      padding-bottom: 28px;
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    .about-me__container-info {
+      margin: 60px 0 0;
+    }
+  
+    .about-me__name {
+      margin: 40px 0 20px;
+      font-size: 30px;
+      line-height: 36px;
+    }
+
+    .about-me__profession {
+      font-size: 11px;
+      line-height: 16px;
+    }
+
+    .about-me__paragraph {
+      margin: 20px 0 0;
+      font-size: 11px;
+      line-height: 16px;
+    }
+  
+    .about-me__photo {
+      width: 292px;
+      height: 352px;
+    }
+
+    .about-me__links {
+      margin-top: 40px;
+    }
+    
+    .about-me__link {
+      margin-right: 26px;
+    }
+  }
+  
