@@ -19,6 +19,7 @@ function Portfolio() {
                 className="portfolio__link-arrow"
                 src={arrow}
                 alt="Ссылка на проект со статичным сайтом"
+                target="_blank"
               />
             </div>
           </a>
@@ -28,6 +29,7 @@ function Portfolio() {
             className="portfolio__link "
             href="https://github.com/VasilevaMarinaSmr/russian-travel"
             rel="noreferrer"
+            target="_blank"
           >
             <p className="portfolio__project-type">Адаптивный сайт</p>
             <div className="portfolio__arrow-container">
@@ -44,6 +46,7 @@ function Portfolio() {
             className="portfolio__link "
             href="https://github.com/VasilevaMarinaSmr/react-mesto-api-full-gha"
             rel="noreferrer"
+            target="_blank"
           >
             <p className="portfolio__project-type">Одностраничное приложение</p>
             <div className="portfolio__arrow-container">
