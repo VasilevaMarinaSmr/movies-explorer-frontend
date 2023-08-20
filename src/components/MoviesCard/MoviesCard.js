@@ -57,6 +57,12 @@ function MoviesCard({ movie, onDeleteMovie, onSaveMovie, savedMovies }) {
           ></button>
         )}
       </div>
+      <a
+        className="movie__link"
+        href={movie.trailer || movie.trailerLink}
+        target="_blank"
+        rel="noreferrer"
+      >
       <img
         className="movie__img"
         src={`${
@@ -65,7 +71,9 @@ function MoviesCard({ movie, onDeleteMovie, onSaveMovie, savedMovies }) {
             : movie.image
         }`}
         alt={`сцена из фильма ${movie.nameRU}`}
+      
       />
+      </a>
     </li>
   );
 }
