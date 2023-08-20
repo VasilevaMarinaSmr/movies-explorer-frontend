@@ -1,0 +1,9 @@
+.movies__search-blank {
+    margin: 150px auto 150px;
+    text-align: center;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 19px;
+    line-height: 1.2;
+    color: black;    
+    
+  }

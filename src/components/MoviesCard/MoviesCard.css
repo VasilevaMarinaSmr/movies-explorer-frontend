@@ -95,7 +95,8 @@
   
   .movie__img {
     padding-top: 14px;
-    object-fit: contain;
+    object-fit: cover;
+    height: 203px;
     width: 100%;    
   }
   
@@ -103,10 +104,20 @@
     .movie__info {
       width: 253px;
     }
+
+    .movie__img {
+      height: 190px;
   }
+}
   
   @media screen and (max-width: 700px) {
     .movie__info {
       width: 214px;
     }
+  
+    .movie__img {
+      height: 168px;
+    }
+
+
   }

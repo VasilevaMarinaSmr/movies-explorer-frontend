@@ -13,6 +13,10 @@ class MainApi {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
+  getStartData() {
+ return Promise.all([this.getUserInfo(), this.getInitialMovies()]);
+}
+
   register(data) {
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
@@ -49,8 +53,8 @@ class MainApi {
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
-      headers: this._headers,
       credentials: "include",
+      headers: this._headers,      
     }).then(this._checkResponse);
   }
 
@@ -95,7 +99,7 @@ class MainApi {
     }).then(this._checkResponse);
   }
 
-  getInitialCards() {
+  getInitialMovies() {
     return fetch(`${this._baseUrl}/movies`, {
       method: "GET",
       headers: this._headers,

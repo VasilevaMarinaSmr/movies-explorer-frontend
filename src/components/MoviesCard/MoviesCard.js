@@ -1,50 +1,71 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { convertHoursMinutes } from "../../utils/utils";
 import "./MoviesCard.css";
 
-function MoviesCard({ movie }) {
+function MoviesCard({ movie, onDeleteMovie, onSaveMovie, savedMovies }) {
   const { pathname } = useLocation();
   const [isSaved, setSaved] = useState(false);
 
-  function getTime(min) {
-    if (min > 60) {
-      return `${Math.floor(min / 60)}ч ${min % 60}м`;
-    } else if (min === 60) {
-      return "1ч";
+  useEffect(() => {
+    setSaved(
+      pathname === "/movies"
+        ? savedMovies.some((savedMovie) => {
+            return savedMovie.movieId === movie.id;
+          })
+        : true
+    );
+  }, [savedMovies, pathname === "/movies", "/saved-movies"]);
+
+  function toggleSave() {
+    if (isSaved) {
+      deleteMovie(movie);
     } else {
-      return `${min}мин`;
+      onSaveMovie(movie);
     }
   }
 
-  function handleClick() {
-    if (isSaved) {
-       setSaved(false);
-    } else {
-       setSaved(true);
-    }
+  function deleteMovie(movie) {
+    if (pathname === "/movies") 
+      onDeleteMovie(movie.id)
+    else 
+      onDeleteMovie(movie.movieId);
+    setSaved(false);
   }
+
 
   return (
-    <li className='movie'>
-      <div className='movie__header'>
-        <div className='movie__info'>
-          <h2 className='movie__name'>{movie.nameRu}</h2>
-          <p className='movie__duration'>{getTime(movie.duration)}</p>
+    <li className="movie">
+      <div className="movie__header">
+        <div className="movie__info">
+          <h2 className="movie__name">{movie.nameRU}</h2>
+          <p className="movie__duration">
+            {convertHoursMinutes(movie.duration)}
+          </p>
         </div>
         {pathname === "/movies" ? (
           <button
-            type='button'
-            className={`movie__btn-save ${
-              isSaved && "movie__btn-save_active"
-            }`} onClick={handleClick}>            
-            </button>
+            type="button"
+            className={`movie__btn-save ${isSaved && "movie__btn-save_active"}`}
+            onClick={toggleSave}
+          ></button>
         ) : (
           <button
-            type='button'
-            className='movie__btn-delete'></button>
+            type="button"
+            className="movie__btn-delete"
+            onClick={toggleSave}
+          ></button>
         )}
       </div>
-      <img className='movie__img' src={movie.image} alt={`сцена из фильма ${movie.nameRu}`}/>
+      <img
+        className="movie__img"
+        src={`${
+          pathname === "/movies"
+            ? `https://api.nomoreparties.co${movie.image.url}`
+            : movie.image
+        }`}
+        alt={`сцена из фильма ${movie.nameRU}`}
+      />
     </li>
   );
 }

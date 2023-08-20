@@ -88,6 +88,11 @@
     color: #FF3055;
     font-weight: 500;
   }
+
+  .profile__btn_hide{
+    visibility: hidden;
+  }
+
   
   .profile__link{
     color: #FF3055;

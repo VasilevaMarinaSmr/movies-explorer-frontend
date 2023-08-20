@@ -1,0 +1,18 @@
+.message {
+    margin: 0 0 20px;
+    width: 100%;
+    min-height: 13px;    
+  }
+  
+  .message__text {
+    margin: 0;
+    text-align: center;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    color: #FF3055;    
+  }
+  
+  .message__text_type_success {
+    color: #2be080;
+  }
