@@ -26,13 +26,10 @@ function MoviesCard({ movie, onDeleteMovie, onSaveMovie, savedMovies }) {
   }
 
   function deleteMovie(movie) {
-    if (pathname === "/movies") 
-      onDeleteMovie(movie.id)
-    else 
-      onDeleteMovie(movie.movieId);
+    if (pathname === "/movies") onDeleteMovie(movie.id);
+    else onDeleteMovie(movie.movieId);
     setSaved(false);
   }
-
 
   return (
     <li className="movie">
@@ -60,19 +57,18 @@ function MoviesCard({ movie, onDeleteMovie, onSaveMovie, savedMovies }) {
       <a
         className="movie__link"
         href={movie.trailer || movie.trailerLink}
-        target="_blank"
         rel="noreferrer"
+        target="_blank"
       >
-      <img
-        className="movie__img"
-        src={`${
-          pathname === "/movies"
-            ? `https://api.nomoreparties.co${movie.image.url}`
-            : movie.image
-        }`}
-        alt={`сцена из фильма ${movie.nameRU}`}
-      
-      />
+        <img
+          className="movie__img"
+          src={`${
+            pathname === "/movies"
+              ? `https://api.nomoreparties.co${movie.image.url}`
+              : movie.image
+          }`}
+          alt={`сцена из фильма ${movie.nameRU}`}
+        />
       </a>
     </li>
   );

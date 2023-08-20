@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { SUCCESSFUL_CODE } from "../../utils/constants";
-import { EMAIL_REGEXP, NAME_REGEXP } from "../../utils/constants.js";
+import { EMAIL_REGEXP } from "../../utils/constants.js";
 import { useFormValidation } from "../../utils/useFormValidation";
 import HintMessage from "../HintMessage/HintMessage";
 
@@ -14,6 +14,8 @@ function Profile({ onSignOut, onUpdate, infoMessage }) {
   const { values, errors, isValid, handleChange, setValues, setIsValid } =
     useFormValidation();
   const [isInputActive, setIsInputActive] = useState(false);
+
+  
 
   useEffect(() => {
     if (currentUser) {
@@ -59,10 +61,11 @@ function Profile({ onSignOut, onUpdate, infoMessage }) {
       <main className="profile">
         <div className="profile__box">
           <h2 className="profile__title">{`Привет, ${currentUser.name}!!`}</h2>
-          <form
+          <form            
             className="profile__form"
             onSubmit={handleSubmit}
             onInput={handleRedactClick}
+            noValidate
           >
             <label className="profile__input-box">
               Имя
@@ -75,14 +78,13 @@ function Profile({ onSignOut, onUpdate, infoMessage }) {
                 placeholder="имя"
                 minLength="2"
                 maxLength="30"
-                required
-                title="Разрешено использовать латиницу, кириллицу, пробел или дефис"
-                pattern={NAME_REGEXP}
-                id="name"
+                required 
+                id="name"                
               />
               <span id="name-error" className="profile__input-error">
                 {errors.name
-                  ? "Поле должно быть заполнено и может содержать только латиницу, кириллицу, пробел или дефис"
+                  ? `Поле Имя должно быть заполнено и может содержать только латиницу,
+                  кириллицу, пробел, дифис.`
                   : ""}
               </span>
             </label>
@@ -103,17 +105,20 @@ function Profile({ onSignOut, onUpdate, infoMessage }) {
                 id="email"
               />
               <span id="email-error" className="profile__input-error">
-                {errors.email || ""}
+                {errors.email
+                  ? `Поле Email должно содержать латинские буквы в нижнем регистре,
+                  символы, знак @, доменное имя почтового сервера, точка и доменное имя.`
+                  : ""}
               </span>
             </label>
 
-            <HintMessage {...infoMessage} />
+            {true && <HintMessage {...infoMessage} />}
 
             <button
               type="submit"
-              className={`profile__btn profile__btn_type_edit ${
-                !isInputActive && "profile__btn_hide"
-              }`}
+              className={`profile__btn profile__btn_type_edit
+               ${!isInputActive && "profile__btn_hide"}
+               ${!isValid && "profile__btn_hide"}`}
               disabled={!isValid}
             >
               Редактировать

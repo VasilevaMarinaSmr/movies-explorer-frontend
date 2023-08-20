@@ -36,9 +36,11 @@ function HintMessage({ isShow, message, code, type }) {
     <div className="message">
       {isShow && (
         <p
-          className={`message__text ${
+          className={`message__text
+           ${
             code === SUCCESSFUL_CODE && "message__text_type_success"
-          }`}
+          }` 
+        }
         >
           {contentMessage}
         </p>

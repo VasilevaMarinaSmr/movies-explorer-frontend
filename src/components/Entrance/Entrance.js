@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../images/logo.svg";
-import { EMAIL_REGEXP, NAME_REGEXP } from "../../utils/constants.js";
+import { EMAIL_REGEXP } from "../../utils/constants.js";
 import { useFormValidation } from "../../utils/useFormValidation";
 import HintMessage from "../HintMessage/HintMessage";
 
@@ -35,8 +35,10 @@ function Entrance({
       </NavLink>
       <h2 className="entrance__title">{title}</h2>
       <form className="entrance__form"
+      noValidate
       onSubmit={handleSubmit}
-      disabled={isFormDisabled}>
+      disabled={isFormDisabled}
+      >
          {type === 'signup' && (
            <label className="entrance__input-box">
            Имя
@@ -49,12 +51,12 @@ function Entrance({
              maxLength="30"
              required             
              value={values.name || ""}
-             onChange={handleChange}
-             pattern = {NAME_REGEXP}
+             onChange={handleChange}             
            />
            <span id="name-error" className="entrance__error">
            {errors.name
-               ? `Поле должно быть заполнено`
+               ? `Поле Имя должно быть заполнено и может содержать только латиницу,
+               кириллицу, пробел, дифис.`
                : ""}
            </span>
          </label>
@@ -64,10 +66,9 @@ function Entrance({
           E-mail
           <input
             name="email"
-            type="email"
-            id="email"
+            type="text"
             className="entrance__input-form"
-            placeholder="e-mail"
+            placeholder="email"
             minLength="2"
             maxLength="30"
             value={values.email || ""}
@@ -75,34 +76,40 @@ function Entrance({
             onChange={handleChange}
             pattern = {EMAIL_REGEXP}
           />
-          <span id="email-error" className="entrance__error"></span>
-          {errors.email || ""}
+          <span id="email-error" className="entrance__error">
+          {errors.email ? 
+          `Поле Email должно содержать латинские буквы в нижнем регистре,
+          символы, знак @, доменное имя почтового сервера, точка и доменное имя.` : ""}
+          </span>
         </label>
         <label className="entrance__input-box">
           Пароль
           <input
+            id="password"
             name="password"
             type="password"
             className="entrance__input-form"
-            minLength="5"
+            minLength="6"
             maxLength="40"
             required
             value={values.password || ""}
-            onChange={handleChange}
-            autoComplete="on"
+            onChange={handleChange}            
           />
           <span id="password-error" className="entrance__error">
-          {errors.password || ""}
+          {errors.password ? 
+          `Пароль должен соcтоять не менее чем из 6 знаков, включая строчные и
+          прописные латинские буквы, цифры и символы.` : ""}
           </span>
         </label>
         <HintMessage {...infoMessage} />
         <button
-          className={`entrance__submit-btn ${
-            linkTo === "signup" && "entrance__login-btn"
-          }`}
+          className={`entrance__submit-btn
+          ${linkTo === "signup" && "entrance__login-btn"  }  
+          ${!isValid && 'entrance__submit-btn_disabled'}`}
           type="submit"
-          disabled={!isValid}
+          disabled={!isValid}          
         >
+
           {btnName}
         </button>
         <p className="entrance__subtitle">

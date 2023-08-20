@@ -66,6 +66,18 @@ function App() {
       .finally(() => setIsLoading(false));
   }, [isLoggedIn]);
 
+  function handleResetInfoMessage() {
+    if (infoMessage.isShow) {
+      setInfoMessage({
+        ...infoMessage,
+        isShow: false,
+        message: "",
+        type: "",
+        code: SUCCESSFUL_CODE,
+      });
+    }
+  }
+
   function handleSaveMovie(movie) {
     mainApi
       .saveMovie(movie)
@@ -93,7 +105,7 @@ function App() {
       .then((data) => {
         setLoggedIn(true);
         setCurrentUser(data);
-        navigate("/", { replace: true });
+        navigate("/movies", { replace: true });
       })
       .catch(({ message, statusCode }) => {
         setInfoMessage({
@@ -149,7 +161,7 @@ function App() {
         setCurrentUser(data);
         setInfoMessage({
           ...infoMessage,
-          isShown: true,
+          isShow: true,
           type: "profile",
         });
       })
@@ -164,9 +176,12 @@ function App() {
       });
   }
 
+  
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="app">
+      <div className="app"
+      onClick={infoMessage.isShow ? handleResetInfoMessage : null}>
         {isLoading ? (
           <Preloader />
         ) : (

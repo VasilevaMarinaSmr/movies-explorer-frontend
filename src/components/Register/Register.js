@@ -1,11 +1,10 @@
-import { useFormValidation } from "../../utils/useFormValidation";
 import Entrance from "../Entrance/Entrance";
 import "./Register.css";
 
 
 
 function Register({ onRegister, infoMessage, ...isFormDisabled }) {
-  const { values, errors, isValid, handleChange } = useFormValidation();
+  
   return (
     <>
       <main className="register">
