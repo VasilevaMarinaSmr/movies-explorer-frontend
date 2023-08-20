@@ -9,12 +9,19 @@ import "./SavedMovies.css";
 
 function SavedMovies({ savedMovies, isLoggedIn, onDeleteMovie }) {
   const { pathname } = useLocation();
+  const [searchQuery, setSearchQuery] = useState("");
+
   const [foundMovies, setFoundMovies] = useState([]);
   const [queryError, setQueryError] = useState("");
   const [checkboxSelectOn, setCheckboxSelectOn] = useState(false);
 
   useEffect(() => {
-    setFoundMovies(savedMovies);
+    if (searchQuery) {
+      const filteredMovies = savedMovies.filter((movie) =>
+        movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFoundMovies(filteredMovies);
+    } else setFoundMovies(savedMovies);
   }, [pathname, savedMovies]);
 
   function switchCheckbox() {
@@ -22,6 +29,7 @@ function SavedMovies({ savedMovies, isLoggedIn, onDeleteMovie }) {
   }
 
   function handleSearchSubmit(value) {
+    setSearchQuery(value);
     if (value) {
       const filteredMovies = savedMovies.filter((movie) =>
         movie.nameRU.toLowerCase().includes(value.toLowerCase())
@@ -38,20 +46,18 @@ function SavedMovies({ savedMovies, isLoggedIn, onDeleteMovie }) {
 
       if (checkboxSelectOn)
         setFoundMovies(
-            JSON.parse(localStorage.getItem("foundSavedShortMovies"))
-          )
-      else
-      setFoundMovies(JSON.parse(localStorage.getItem("foundSavedMovies")));
+          JSON.parse(localStorage.getItem("foundSavedShortMovies"))
+        );
+      else setFoundMovies(JSON.parse(localStorage.getItem("foundSavedMovies")));
     } else {
       if (checkboxSelectOn)
         setFoundMovies(
-            savedMovies.filter((movie) => {
-              return movie.duration <= DURATION_SHORT_MOVIE;
-            })
-          )
-        else
-        setFoundMovies(savedMovies);
-      }
+          savedMovies.filter((movie) => {
+            return movie.duration <= DURATION_SHORT_MOVIE;
+          })
+        );
+      else setFoundMovies(savedMovies);
+    }
   }
 
   function selectShortMovie(Movies) {
@@ -68,8 +74,6 @@ function SavedMovies({ savedMovies, isLoggedIn, onDeleteMovie }) {
       return;
     }
   }
-
-  
 
   return (
     <>
