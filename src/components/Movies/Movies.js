@@ -131,9 +131,9 @@ function Movies({ isLoggedIn, onSaveMovie, onDeleteMovie, savedMovies }) {
   };
 
   function countRenderedMovies(foundMovies) {
-    if (currentWidth > 1078) {
+    if (currentWidth > 1076) {
       setRenderedMovies(foundMovies.slice(0, MOVIES_TO_RENDER_1280));
-    } else if (currentWidth > 767 && currentWidth <= 1078) {
+    } else if (currentWidth > 611 && currentWidth <= 1076) {
       setRenderedMovies(foundMovies.slice(0, MOVIES_TO_RENDER_768));
     } else {
       setRenderedMovies(foundMovies.slice(0, MOVIES_TO_RENDER_320));
@@ -141,13 +141,13 @@ function Movies({ isLoggedIn, onSaveMovie, onDeleteMovie, savedMovies }) {
   }
 
   function onShowMoreClickButton() {
-    if (renderedMovies.length < foundMovies.length && currentWidth > 1078) {
+    if (renderedMovies.length < foundMovies.length && currentWidth > 1076) {
       setRenderedMovies(
         foundMovies.slice(0, renderedMovies.length + MOVIES_TO_ADD_1280)
       );
     } else if (
       renderedMovies.length < foundMovies.length &&
-      currentWidth <= 1078
+      currentWidth <= 1076
     ) {
       setRenderedMovies(
         foundMovies.slice(0, renderedMovies.length + MOVIES_TO_ADD_768)
