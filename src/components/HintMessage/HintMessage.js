@@ -5,7 +5,7 @@ import "./HintMessage.css";
 function HintMessage({ isShow, message, code, type }) {
   const [contentMessage, setСontentMessage] = useState("");
 
-  useEffect(() => {
+  useEffect(() => {     
     switch (code) {
       case INVALID_CODE:
         setСontentMessage(getMessage(type));

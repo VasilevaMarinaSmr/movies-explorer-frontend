@@ -110,7 +110,7 @@ function App() {
       .catch(({ message, statusCode }) => {
         setInfoMessage({
           ...infoMessage,
-          isShown: true,
+          isShow: true,
           message,
           code: statusCode,
           type: "login",
@@ -131,7 +131,7 @@ function App() {
       .catch(({ message, statusCode }) => {
         setInfoMessage({
           ...infoMessage,
-          isShown: true,
+          isShow: true,
           message,
           code: statusCode,
           type: "register",
@@ -168,15 +168,13 @@ function App() {
       .catch(({ message, statusCode }) => {
         setInfoMessage({
           ...infoMessage,
-          isShown: true,
+          isShow: true,
           message,
           code: statusCode,
           type: "profile",
         });
       });
-  }
-
-  
+  }  
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

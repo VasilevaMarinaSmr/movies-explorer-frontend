@@ -36,10 +36,10 @@ function Profile({ onSignOut, onUpdate, infoMessage }) {
   }, [setIsValid, values, currentUser]);
 
   useEffect(() => {
-    if (infoMessage.isShown && infoMessage.code === SUCCESSFUL_CODE) {
+    if (infoMessage.isShow && infoMessage.code === SUCCESSFUL_CODE) {
       setIsInputActive(false);
     }
-  }, [infoMessage.isShown, setIsInputActive, infoMessage.code]);
+  }, [infoMessage.isShow, setIsInputActive, infoMessage.code]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -112,7 +112,7 @@ function Profile({ onSignOut, onUpdate, infoMessage }) {
               </span>
             </label>
 
-            {true && <HintMessage {...infoMessage} />}
+            <HintMessage {...infoMessage} />
 
             <button
               type="submit"

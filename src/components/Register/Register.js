@@ -17,8 +17,7 @@ function Register({ onRegister, infoMessage, ...isFormDisabled }) {
           linkName="Войти"
           onSubmit={onRegister}
           infoMessage={infoMessage}
-          isFormDisabled={isFormDisabled}        >
-         
+          isFormDisabled={isFormDisabled}>         
         </Entrance>
       </main>
     </>

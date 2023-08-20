@@ -10,12 +10,12 @@ class MainApi {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Ошибка: ${res.status}`);
+    return res.json().then((err) => Promise.reject(err));
   }
 
   getStartData() {
- return Promise.all([this.getUserInfo(), this.getInitialMovies()]);
-}
+    return Promise.all([this.getUserInfo(), this.getInitialMovies()]);
+  }
 
   register(data) {
     return fetch(`${this._baseUrl}/signup`, {
@@ -53,8 +53,8 @@ class MainApi {
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
+      headers: this._headers,
       credentials: "include",
-      headers: this._headers,      
     }).then(this._checkResponse);
   }
 
