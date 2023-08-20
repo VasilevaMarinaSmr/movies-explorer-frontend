@@ -1,12 +1,80 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { DURATION_SHORT_MOVIE } from "../../utils/constants.js";
 import Footer from "../Footer/Footer";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Navigation from "../Navigation/Navigation";
 import SearchForm from "../SearchForm/SearchForm";
 import "./SavedMovies.css";
 
-function SavedMovies({ movies, isLoggedIn }) {
+function SavedMovies({ savedMovies, isLoggedIn, onDeleteMovie }) {
+  const { pathname } = useLocation();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const [foundMovies, setFoundMovies] = useState([]);
+  const [queryError, setQueryError] = useState("");
+  const [checkboxSelectOn, setCheckboxSelectOn] = useState(false);
+
+  useEffect(() => {
+    if (searchQuery) {
+      const filteredMovies = savedMovies.filter((movie) =>
+        movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFoundMovies(filteredMovies);
+    } else setFoundMovies(savedMovies);
+  }, [pathname, savedMovies]);
+
+  function switchCheckbox() {
+    setCheckboxSelectOn(!checkboxSelectOn);
+  }
+
+  function handleSearchSubmit(value) {
+    setSearchQuery(value);
+    if (value) {
+      const filteredMovies = savedMovies.filter((movie) =>
+        movie.nameRU.toLowerCase().includes(value.toLowerCase())
+      );
+      localStorage.setItem("foundSavedMovies", JSON.stringify(filteredMovies));
+      if (filteredMovies.length !== 0) {
+        setQueryError("");
+        setFoundMovies(filteredMovies);
+      } else {
+        setQueryError("Ничего не найдено");
+        setFoundMovies([]);
+      }
+      selectShortMovie(filteredMovies);
+
+      if (checkboxSelectOn)
+        setFoundMovies(
+          JSON.parse(localStorage.getItem("foundSavedShortMovies"))
+        );
+      else setFoundMovies(JSON.parse(localStorage.getItem("foundSavedMovies")));
+    } else {
+      if (checkboxSelectOn)
+        setFoundMovies(
+          savedMovies.filter((movie) => {
+            return movie.duration <= DURATION_SHORT_MOVIE;
+          })
+        );
+      else setFoundMovies(savedMovies);
+    }
+  }
+
+  function selectShortMovie(Movies) {
+    if (checkboxSelectOn) {
+      const filteredShortMovies = Movies.filter((movie) => {
+        return movie.duration <= DURATION_SHORT_MOVIE;
+      });
+      localStorage.setItem(
+        "foundSavedShortMovies",
+        JSON.stringify(filteredShortMovies)
+      );
+      return filteredShortMovies;
+    } else {
+      return;
+    }
+  }
+
   return (
     <>
       <header className="header">
@@ -16,9 +84,19 @@ function SavedMovies({ movies, isLoggedIn }) {
         <Navigation />
       </header>
       <main className="saved-movies">
-        <SearchForm />
-        <MoviesCardList movies={movies} MoreMovies={true}/>
-
+        <SearchForm
+          switchCheckbox={switchCheckbox}
+          handleSearch={handleSearchSubmit}
+          checkboxSelectOn={checkboxSelectOn}
+        />
+        {!queryError && (
+          <MoviesCardList
+            movies={foundMovies}
+            onDeleteMovie={onDeleteMovie}
+            savedMovies={savedMovies}
+          />
+        )}
+        {queryError && <p className="movies__search-blank">{queryError}</p>}
         <Footer />
       </main>
     </>
